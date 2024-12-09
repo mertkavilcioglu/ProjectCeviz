@@ -24,17 +24,45 @@ public class EntityController : MonoBehaviour
     {
 
     }
-    public float GetInsight(){
+    public float GetInsight()
+    {
         return insight;
     }
-    public float GetDeception(){
+    public float GetDeception()
+    {
         return deception;
     }
-    public float GetKnowledge(){
+    public float GetKnowledge()
+    {
         return knowledge;
     }
-    public float GetBalance(){
+    public float GetBalance()
+    {
         return balance;
+    }
+    public void SetInsight(float insight)
+    {
+        this.insight = insight;
+    }
+    public void SetDeception(float deception)
+    {
+        this.deception = deception;
+    }
+    public void SetKnowledge(float knowledge)
+    {
+        this.knowledge = knowledge;
+    }
+    public void SetBalance(float balance)
+    {
+        this.balance = balance;
+    }
+    public void AddBalance(float balance)
+    {
+        this.balance += balance;
+    }
+    public void SetPlayerCharacter(bool playerCharacter)
+    {
+        this.playerCharacter = playerCharacter;
     }
     public bool HasItem(GameObject item)
     {
@@ -59,7 +87,7 @@ public class EntityController : MonoBehaviour
         }
 
     }
-     public void buyItem(GameObject item, float offer)
+    public void buyItem(GameObject item, float offer)
     {
         if (balance >= offer)
         {
