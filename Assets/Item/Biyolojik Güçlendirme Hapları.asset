@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
+  m_Name: "Biyolojik G\xFC\xE7lendirme Haplar\u0131"
+  m_EditorClassIdentifier: 
+  itemName: "Biyolojik G\xFC\xE7lendirme Haplar\u0131 "
+  itemDescription: "Kullan\u0131c\u0131n\u0131n fiziksel ve zihinsel yeteneklerini
+    ge\xE7ici olarak art\u0131ran renkli haplar. Parlak bir kutu i\xE7inde muhafaza
+    edilir."
+  value: 1000
+  art: {fileID: -1895309364, guid: 6c6910dec29dbc24483a5430ac5c8739, type: 3}

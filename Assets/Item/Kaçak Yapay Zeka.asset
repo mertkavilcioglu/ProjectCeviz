@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
+  m_Name: "Ka\xE7ak Yapay Zeka"
+  m_EditorClassIdentifier: 
+  itemName: "Ka\xE7ak Yapay Zeka"
+  itemDescription: "Yasad\u0131\u015F\u0131 olarak \xFCretilmi\u015F, holografik
+    bir g\xF6r\xFCnt\xFCye sahip, tehlikeli yapay zeka. K\xFC\xE7\xFCk bir veri kristali
+    i\xE7inde saklan\u0131r."
+  value: 1700
+  art: {fileID: 1363163509, guid: 6c6910dec29dbc24483a5430ac5c8739, type: 3}

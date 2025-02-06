@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
+  m_Name: "Enerji \xC7ekirde\u011Fi"
+  m_EditorClassIdentifier: 
+  itemName: "Enerji \xC7ekirde\u011Fi"
+  itemDescription: "Bir \xE7e\u015Fit g\xFC\xE7l\xFC, mavi \u0131\u015F\u0131lt\u0131lar
+    sa\xE7an k\xFC\xE7\xFCk enerji kayna\u011F\u0131. Ara\xE7lar\u0131 veya makineleri
+    an\u0131nda \u015Farj edebilir. "
+  value: 1400
+  art: {fileID: 267585768, guid: 6c6910dec29dbc24483a5430ac5c8739, type: 3}

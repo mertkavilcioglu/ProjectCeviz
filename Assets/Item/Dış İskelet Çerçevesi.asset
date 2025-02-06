@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
+  m_Name: "D\u0131\u015F \u0130skelet \xC7er\xE7evesi"
+  m_EditorClassIdentifier: 
+  itemName: "D\u0131\u015F \u0130skelet \xC7er\xE7evesi"
+  itemDescription: "Kullan\u0131c\u0131n\u0131n kas g\xFCc\xFCn\xFC art\u0131ran
+    ve ona \xFCst\xFCn dayan\u0131kl\u0131l\u0131k kazand\u0131ran mekanik d\u0131\u015F
+    iskelet. Metal \xE7er\xE7evesi b\xFCy\xFCk eklemlerle donat\u0131lm\u0131\u015Ft\u0131r. "
+  value: 1200
+  art: {fileID: -1564595247, guid: 6c6910dec29dbc24483a5430ac5c8739, type: 3}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
+  m_Name: "Geli\u015Fmi\u015F Gece G\xF6r\xFC\u015F G\xF6zl\xFC\u011F\xFC"
+  m_EditorClassIdentifier: 
+  itemName: "Geli\u015Fmi\u015F Gece G\xF6r\xFC\u015F G\xF6zl\xFC\u011F\xFC"
+  itemDescription: "G\xF6zlerin \xF6n\xFCne yerle\u015Ftirildi\u011Finde, karanl\u0131kta
+    bile m\xFCkemmel g\xF6r\xFC\u015F sa\u011Flar. Ye\u015Fil neon ekran ve hassas
+    lenslerle donat\u0131lm\u0131\u015Ft\u0131r."
+  value: 1500
+  art: {fileID: -1110659612, guid: 6c6910dec29dbc24483a5430ac5c8739, type: 3}
