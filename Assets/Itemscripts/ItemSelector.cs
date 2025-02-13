@@ -4,35 +4,31 @@ using UnityEngine;
 
 public class ItemSelector : MonoBehaviour
 {
-    public Item[] items;
+    public List<Item> items = new List<Item>();
 
-    private int Index;
+    private int index;
+
     public int RandomItem()
     {
-        if (items.Length == 0) return 0;
+        if (items.Count == 0) return 0;
 
-        else
-        {
-        Index = Random.Range(0, items.Length);
-        
-        return Index;
-        }
-    }   
+        index = Random.Range(0, items.Count);
+        return index;
+    }
+
     public int TotalLength()
     {
-        return items.Length;
+        return items.Count;
+        
     }
 
     public int ItemValue()
     {
-        return items[Index].value;
+        return items[index].value;
     }
     public string ItemName() 
     {  
-        return items[Index].name;
+        return items[index].name;
     }
-    void Start()
-    {
-        
-    }
+    
 }
