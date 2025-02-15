@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
   m_Name: Sentetik Organlar
   m_EditorClassIdentifier: 
-  itemName: 'Sentetik Organlar '
+  itemName: Sentetik Organlar
   itemDescription: "\u0130nsana neredeyse birebir benzeyen, yapay olarak \xFCretilmi\u015F
     organlar. Cam kaplar i\xE7inde s\u0131v\u0131 i\xE7erisinde saklan\u0131r, neredeyse
     hi\xE7 eskimez."

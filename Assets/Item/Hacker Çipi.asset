@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
   m_Name: "Hacker \xC7ipi"
   m_EditorClassIdentifier: 
-  itemName: "Hacker \xC7ipi "
+  itemName: "Hacker \xC7ipi"
   itemDescription: "Kafatas\u0131n\u0131n arkas\u0131na yerle\u015Ftirilebilecek
     boyutta k\xFC\xE7\xFCk, parlak bir \xE7ip. Bilgisayar sistemlerine an\u0131nda
     eri\u015Fim sa\u011Flar.  "

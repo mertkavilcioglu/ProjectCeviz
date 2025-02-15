@@ -41,15 +41,7 @@ public class textAdd : MonoBehaviour
     }
 
 
-    void Start()
-    {
-        if (text1.text == null)
-        {
-            text1.text = "0";
-        }
-
-    }
-
+   
     
     void Update()
     {
