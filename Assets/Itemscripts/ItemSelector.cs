@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ItemSelector : MonoBehaviour
 {
+   
+
     public List<Item> items = new List<Item>();
+    public List<Item> itemsTest = new List<Item>();
 
     private int index;
-
+    
     public int RandomItem()
     {
         if (items.Count == 0) return 0;
@@ -19,6 +22,7 @@ public class ItemSelector : MonoBehaviour
     public int TotalLength()
     {
         return items.Count;
+        
         
     }
 

@@ -7,6 +7,7 @@ using UnityEngine;
 public class GetInput : MonoBehaviour
 {
     public TMP_InputField tmpInputField;
+    
     private int textValue;
     
 
@@ -22,6 +23,7 @@ public class GetInput : MonoBehaviour
             Debug.Log("Invalid number");
             return 0;
         }
-        Debug.Log("You typed: " + tmpInputField.text);
+        
     }
+
 }

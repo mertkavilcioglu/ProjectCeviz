@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
   m_Name: "Ka\xE7ak \u0130la\xE7 Kiti"
   m_EditorClassIdentifier: 
-  itemName: "Ka\xE7ak \u0130la\xE7 Kiti "
+  itemName: "Ka\xE7ak \u0130la\xE7 Kiti"
   itemDescription: "Yasad\u0131\u015F\u0131, performans art\u0131r\u0131c\u0131 ila\xE7lar
     ve enjekt\xF6rlerden olu\u015Fan bir kit. K\xFC\xE7\xFCk metal kutu i\xE7inde
     farkl\u0131 renklerde serumlar bulunur. "

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
   m_Name: Kuantum Pil
   m_EditorClassIdentifier: 
-  itemName: 'Kuantum Pil '
+  itemName: Kuantum Pil
   itemDescription: "Sonsuz enerji \xFCretebilen, minyat\xFCr bir pil. Metalik y\xFCzeyi
     kristalize detaylarla s\xFCsl\xFCd\xFCr ve hafif \u0131\u015F\u0131k yayar. "
   value: 1900

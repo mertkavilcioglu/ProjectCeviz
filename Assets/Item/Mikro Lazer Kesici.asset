@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d21f1dc30953e42a631a2310f95f66, type: 3}
   m_Name: Mikro Lazer Kesici
   m_EditorClassIdentifier: 
-  itemName: 'Mikro Lazer Kesici '
+  itemName: Mikro Lazer Kesici
   itemDescription: "\u0130nce, zarif bir lazer cihaz\u0131, k\xFC\xE7\xFCk ama son
     derece g\xFC\xE7l\xFC. Metal y\xFCzeyleri keserken k\u0131rm\u0131z\u0131 bir
     \u0131\u015F\u0131k yayar.  "
