@@ -14,7 +14,6 @@ public class ItemSelector : MonoBehaviour
     public int RandomItem()
     {
         if (items.Count == 0) return 0;
-
         index = Random.Range(0, items.Count);
         return index;
     }
@@ -22,7 +21,6 @@ public class ItemSelector : MonoBehaviour
     public int TotalLength()
     {
         return items.Count;
-        
         
     }
 
@@ -34,5 +32,26 @@ public class ItemSelector : MonoBehaviour
     {  
         return items[index].name;
     }
-    
+    public int RandomItemTest()
+    {
+        if (itemsTest.Count == 0) return 0;
+        index = Random.Range(0, itemsTest.Count);
+        return index;
+    }
+
+    public int TotalLengthTest()
+    {
+        return itemsTest.Count;
+
+    }
+
+    public int ItemValueTest()
+    {
+        return itemsTest[index].value;
+    }
+    public string ItemNameTest()
+    {
+        return itemsTest[index].name;
+    }
+
 }
