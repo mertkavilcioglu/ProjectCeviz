@@ -10,7 +10,22 @@ public class ItemSelector : MonoBehaviour
     public List<Item> itemsTest = new List<Item>();
 
     private int index;
-    
+    public void RandomizeItem()
+    {
+        for (int x=0; x<20; x++)
+        {
+            int chance = UnityEngine.Random.Range(0, 2);
+            Debug.Log(chance);
+            if(chance == 1)
+            {
+                items.Add(itemsTest[x]);
+
+            }
+            
+
+        }
+        
+    }
     public int RandomItem()
     {
         if (items.Count == 0) return 0;
