@@ -17,4 +17,4 @@ MonoBehaviour:
     keskinli\u011Finde bir yak\u0131n d\xF6v\xFC\u015F silah\u0131. Keskinli\u011Fiyle
     rakiplerini bir darbede devirebilir. "
   value: 2200
-  art: {fileID: -884427541, guid: 6c6910dec29dbc24483a5430ac5c8739, type: 3}
+  art: {fileID: 21300000, guid: 8420afe8505d6764da54dfe27dc8d1f6, type: 3}
