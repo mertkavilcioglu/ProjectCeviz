@@ -16,7 +16,11 @@ public class ItemSelector : MonoBehaviour
         {
             int chance = UnityEngine.Random.Range(0, 2);
             Debug.Log(chance);
-            if(chance == 1)
+            if(TotalLength()==5)
+            {
+
+            }
+            else if(chance == 1)
             {
                 items.Add(itemsTest[x]);
 

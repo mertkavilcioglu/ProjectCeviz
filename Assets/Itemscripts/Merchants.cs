@@ -41,6 +41,7 @@ public class Merchants : MonoBehaviour
 
         mItemSelector = FindObjectOfType<ItemSelector>();
         getinput = FindObjectOfType<GetInput>();
+        
         if (getinput == null)
         {
             Debug.LogError("GetInput!");
@@ -90,7 +91,7 @@ public class Merchants : MonoBehaviour
                     TextMeshPro.text += ("bu esyayi " + firstValue + " altina satabilirim.");
                     TextMeshPro.text += ("Ne dersin?");
                     spriteLoader.SpriteLoad(name);
-                    //spriteLoader.SpriteLoad(mItemSelector.ItemName());
+                    //spriteLoader.SpriteLoad(mItemSelector.ItemNameTest());
 
                 }
 

@@ -25,5 +25,14 @@ public class GetInput : MonoBehaviour
         }
         
     }
+    
+        void Start()
+        {
+            if (tmpInputField != null)
+            {
+                tmpInputField.textComponent.color = Color.white; 
+            }
+        }
+    
 
 }

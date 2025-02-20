@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 706aa235a5797ea428016f8c2fb062ec
+guid: e95bcf60ad12cc24aa62249bf8a3b8ac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1000
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "EMP Bombas\u0131_0"
+      name: Untitled 21_0
       rect:
         serializedVersion: 2
-        x: 972
-        y: 736
-        width: 387
-        height: 384
+        x: 224
+        y: 144
+        width: 593
+        height: 380
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dc8103df51bc81458b1f81c00da0250
-      internalID: -737857820
+      spriteID: 3f817ce5543daf1408478f072fe334df
+      internalID: -245867248
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "EMP Bombas\u0131_0": -737857820
+      Untitled 21_0: -245867248
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
