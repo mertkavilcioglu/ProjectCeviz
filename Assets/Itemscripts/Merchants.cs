@@ -11,29 +11,46 @@ public class Merchants : MonoBehaviour
     [SerializeField] TextMeshProUGUI TextMeshPro;
     private ItemSelector mItemSelector;
     private GetInput getinput;
-    private textAdd textadd;
     private GameObject imageObject;
     private SpriteLoader spriteLoader;
-    
+    private AnimatorScript animatorScript;
+    public Movement arm1movement;
+    public Movement arm2movement;
     public enum Human
     {
         Buyer,
         Seller
     }
     string name = ("Untitled 15");
-
+    private bool moving=false;
     private int y;
     private int rate;
     private int firstValue;
     private int secondValue;
     private int finalValue;
     private int anger;
-
-
+    public TMP_Text text1;
     private Human human;
-
+    private int temporarybuyer;
+    private int temporaryseller;
     public void Dialog()
     {
+        
+        animatorScript.animator1.Rebind();
+        animatorScript.animator2.Rebind();
+
+        if (animatorScript != null)
+        {
+
+            animatorScript.Walk();
+        }
+        if (moving == false)
+        {
+            arm1movement.ForwardMovement();
+            arm2movement.ForwardMovement();
+            moving = true;
+        }
+        
         
         human = SelectionHuman();
         Debug.Log(SelectionHuman());
@@ -62,8 +79,12 @@ public class Merchants : MonoBehaviour
                 firstValue = mItemSelector.ItemValue() * rate / 100;
                 TextMeshPro.text = (mItemSelector.ItemName() + " Baya iyimis.");
                 TextMeshPro.text += ("Senden bu esyayi alabilmek icin " + firstValue + " kadar altin verebilirim.");
-                TextMeshPro.text += ("Ne dersin?");
+                TextMeshPro.text += ("Ne dersin ?");
                 spriteLoader.SpriteLoad(name);
+                if (animatorScript != null)
+                {
+                    animatorScript.Trigger();
+                }
                 //spriteLoader.SpriteLoad(mItemSelector.ItemName());
 
 
@@ -89,8 +110,12 @@ public class Merchants : MonoBehaviour
                     firstValue = mItemSelector.ItemValueTest() * rate / 100;
                     TextMeshPro.text = (mItemSelector.ItemNameTest() + "'a bakmaya ne dersin?");
                     TextMeshPro.text += ("bu esyayi " + firstValue + " altina satabilirim.");
-                    TextMeshPro.text += ("Ne dersin?");
+                    TextMeshPro.text += ("Ne dersin ?");
                     spriteLoader.SpriteLoad(name);
+                    if (animatorScript != null)
+                    {
+                        animatorScript.Trigger();
+                    }
                     //spriteLoader.SpriteLoad(mItemSelector.ItemNameTest());
 
                 }
@@ -106,28 +131,29 @@ public class Merchants : MonoBehaviour
         
         if (TextMeshPro.text == null)
         {
+            
 
         }
         else if (TextMeshPro.text == ("Bu is burda biter, dolandirici birader"))
         {
+            
 
         }
         else if (TextMeshPro.text == ("bu fiyata anlastik"))
         {
-
-
+            
         }
 
         else
         {
 
-
             
+
             int no;
             int angerRate;
-            int temporary;
+            
             secondValue = getinput.ReadInput();
-            textadd = FindObjectOfType<textAdd>();
+            
 
             
             switch (human)
@@ -144,26 +170,42 @@ public class Merchants : MonoBehaviour
                             imageObject.SetActive(false);
                             mItemSelector.items.RemoveAt(y);
                         }
-                        if (!int.TryParse(textadd.text1.text, out no))
+                        if (!int.TryParse(text1.text, out no))
                         {
                             Debug.Log("Deneme");
                         }
                         no += secondValue;
-                        textadd.text1.text = no.ToString();
-                        
+                        text1.text = no.ToString();
+                        if (animatorScript != null)
+                        {
+                            animatorScript.ShakeTrigger();
+                        }
+                        delay();
                         spriteLoader.SpriteDeactive();
                         if (no>10000)
                         {
                             gameOver();
                         }
-                        
+                        arm1movement.BackMovement();
+                        arm2movement.BackMovement();
+                        moving = false;
                         
                     }
                     else if (secondValue >= firstValue * 3 / 2)
                     {
                         TextMeshPro.text = ("Bu is burda biter, dolandirici birader");
+                        animatorScript.animator1.Rebind();
+                        animatorScript.animator2.Rebind();
                         getinput.tmpInputField.text = null;
                         spriteLoader.SpriteDeactive();
+                        arm1movement.MoveBack();
+                        arm2movement.MoveBack();
+                        moving =false;
+                        if (animatorScript != null)
+                        {
+                            animatorScript.Walk();
+                        }
+                        delayshort();
                     }
                     else
                     {
@@ -172,51 +214,71 @@ public class Merchants : MonoBehaviour
                         if (chance == 0)
                         {
                             TextMeshPro.text = ("Bu is burda biter, dolandirici birader");
+                            animatorScript.animator1.Rebind();
+                            animatorScript.animator2.Rebind();
                             getinput.tmpInputField.text = null;
                             spriteLoader.SpriteDeactive();
+                            arm1movement.MoveBack();
+                            arm2movement.MoveBack();
+                            moving = false;
+                            if (animatorScript != null)
+                            {
+                                animatorScript.Walk();
+                            }
+                            delayshort();
                         }
                         else
                         {
-                            angerRate = Mathf.Abs(secondValue - firstValue);
-                            anger = Mathf.Clamp(angerRate / 100, 0, 10);
-                            int averagePrice = (firstValue + secondValue) / 2;
-                            temporary = finalValue;
-                            finalValue = averagePrice - ((averagePrice - firstValue) * anger / 10);
-
-                            Debug.Log(y + "   ");
-                            Debug.Log(firstValue + " " + secondValue);
-                            /*
-                            if(temporary!=0)
+                            Debug.Log(secondValue);
+                            if (secondValue <= finalValue && temporarybuyer==1)
                             {
-                                if (secondValue <= temporary)
-                                {
-                                    temporary = 0;
-                                    TextMeshPro.text = ("bu fiyata anlastik");
+                                    temporarybuyer = 0;
+                                    TextMeshPro.text = ("anlastik");
 
                                     if (imageObject != null)
                                     {
                                         imageObject.SetActive(false);
                                         mItemSelector.items.RemoveAt(y);
                                     }
-                                    if (!int.TryParse(textadd.text1.text, out no))
+                                    if (!int.TryParse(text1.text, out no))
                                     {
                                         Debug.Log("Deneme");
                                     }
                                     no += secondValue;
-                                    textadd.text1.text = no.ToString();
+                                    text1.text = no.ToString();
+                                    if (animatorScript != null)
+                                    {
+                                    animatorScript.ShakeTrigger();
+                                    }
+                                    delay();
+                                    spriteLoader.SpriteDeactive();
                                     if (no > 10000)
                                     {
-                                        gameOver();
+                                      gameOver();
                                     }
-
-                                }
-
-
+                                    arm1movement.BackMovement();
+                                    arm2movement.BackMovement();
+                                    moving = false;
+                                    
 
                             }
-                            
-                            else*/
-                            TextMeshPro.text = (finalValue + " bu fiyata ne dersin?");
+                            else
+                            {
+                                angerRate = Mathf.Abs(secondValue - firstValue);
+                                anger = Mathf.Clamp(angerRate / 100, 0, 10);
+                                int averagePrice = (firstValue + secondValue) / 2;
+                                finalValue = averagePrice - ((averagePrice - firstValue) * anger / 10);
+                                TextMeshPro.text = (finalValue + " bu fiyata ne dersin?");
+                                temporarybuyer = 1;
+                                Debug.Log(finalValue+ " " + temporarybuyer);
+                            }
+
+
+
+
+
+
+
                         }
 
 
@@ -230,7 +292,7 @@ public class Merchants : MonoBehaviour
                     
 
                     int money;
-                    if (!int.TryParse(textadd.text1.text, out money))
+                    if (!int.TryParse(text1.text, out money))
                     {
                         Debug.Log("Deneme");
                     }
@@ -243,6 +305,16 @@ public class Merchants : MonoBehaviour
                             notEnoughMoney();
                             spriteLoader.SpriteDeactive();
                             getinput.tmpInputField.text = null;
+                            animatorScript.animator1.Rebind();
+                            animatorScript.animator2.Rebind();
+                            arm1movement.MoveBack();
+                            arm2movement.MoveBack();
+                            moving = false;
+                            if (animatorScript != null)
+                            {
+                                animatorScript.Walk();
+                            }
+                            delayshort();
                         }
                         else
                         {
@@ -250,12 +322,12 @@ public class Merchants : MonoBehaviour
 
 
                             TextMeshPro.text = (secondValue + " bu fiyata anlastik");
-                            if (!int.TryParse(textadd.text1.text, out no))
+                            if (!int.TryParse(text1.text, out no))
                             {
                                 Debug.Log("Deneme");
                             }
                             no += -secondValue;
-                            textadd.text1.text = no.ToString();
+                            text1.text = no.ToString();
 
                             if (imageObject == null)
                             {
@@ -263,51 +335,87 @@ public class Merchants : MonoBehaviour
                                 mItemSelector.items.Add(mItemSelector.itemsTest[y]);
 
                             }
-                            
+                            if (animatorScript != null)
+                            {
+                                animatorScript.ShakeTrigger();
+                            }
+                            delay();
                             spriteLoader.SpriteDeactive();
+                            arm1movement.BackMovement();
+                            arm2movement.BackMovement();
+                            moving = false;
+                            
+
                         }
 
                     }
                     else if (secondValue <= firstValue / 2)
                     {
                         TextMeshPro.text = ("Bu is burda biter, dolandirici birader");
+                        animatorScript.animator1.Rebind();
+                        animatorScript.animator2.Rebind();
                         getinput.tmpInputField.text = null;
                         spriteLoader.SpriteDeactive();
+                        arm1movement.MoveBack();
+                        arm2movement.MoveBack();
+                        moving = false;
+                        if (animatorScript != null)
+                        {
+                            animatorScript.Walk();
+                        }
+                        delayshort();
                     }
                     else
                     {
-                        angerRate = Mathf.Abs(secondValue - firstValue);
-                        anger = Mathf.Clamp(angerRate / 100, 0, 10);
-                        int averageprice = (firstValue + secondValue) / 2;
-                        Debug.Log(finalValue);
-                        temporary = finalValue;
-                        finalValue = averageprice - ((averageprice - firstValue) * anger / 10);
-                        
-                        Debug.Log(secondValue+" "+temporary);
-                        /*
-                        if(temporary!=0) 
-                        {
-                        if (secondValue >= temporary)
-                        {
-                            temporary = 0;
-                            TextMeshPro.text = ("          bu fiyata anlastik");
 
-                            if (imageObject != null)
+
+
+
+                        Debug.Log(secondValue);
+                        Debug.Log(finalValue + " " + temporaryseller);
+                        if (secondValue >= finalValue && temporaryseller ==1)
+                        {
+                            temporaryseller = 0;
+                            TextMeshPro.text = ("anlastik");
+
+                            if (imageObject == null)
                             {
-                                imageObject.SetActive(false);
-                                mItemSelector.items.RemoveAt(y);
+                                FindingDisabled();
+                                mItemSelector.items.Add(mItemSelector.itemsTest[y]);
                             }
-                            if (!int.TryParse(textadd.text1.text, out no))
+                            if (!int.TryParse(text1.text, out no))
                             {
                                 Debug.Log("Deneme");
                             }
                             no += -secondValue;
-                            textadd.text1.text = no.ToString();
+                            text1.text = no.ToString();
+                            if (animatorScript != null)
+                            {
+                                animatorScript.ShakeTrigger();
+                            }
+                            delay();
+                            spriteLoader.SpriteDeactive();
+                            if (no > 10000)
+                            {
+                                gameOver();
+                            }
+                            arm1movement.BackMovement();
+                            arm2movement.BackMovement();
+                            moving = false;
 
                         }
+                        
+                        else
+                        {
+                            angerRate = Mathf.Abs(secondValue - firstValue);
+                            anger = Mathf.Clamp(angerRate / 100, 0, 10);
+                            int averageprice = (firstValue + secondValue) / 2;
+                            Debug.Log(finalValue + " " + temporaryseller);
+                            temporaryseller = 1;
+                            finalValue = averageprice - ((averageprice - firstValue) * anger / 10);
+                            TextMeshPro.text = (finalValue + " bu fiyata ne dersin?");
+
                         }
-                        else*/
-                        TextMeshPro.text = (finalValue + " bu fiyata ne dersin?");
 
 
                     }
@@ -327,12 +435,52 @@ public class Merchants : MonoBehaviour
 
 
     }
-    public void Reset()
+    private void delay()
     {
 
+
+        Invoke(nameof(Rebingding), 3f);
+    }
+    private void delayshort()
+    {
+
+
+        Invoke(nameof(Rebingding), 1f);
+    }
+
+    private void Rebingding()
+    {
+
+
+        animatorScript.animator1.Rebind();
+        animatorScript.animator2.Rebind();
+        if (animatorScript != null)
+        {
+            animatorScript.Walk();
+        }
+    }
+    public void Reset()
+    {
+        if (!string.IsNullOrEmpty(TextMeshPro.text))
+        {
+            arm1movement.MoveBack();
+            arm2movement.MoveBack();
+            animatorScript.animator1.Rebind();
+            animatorScript.animator2.Rebind();
+            if (animatorScript != null)
+            {
+                animatorScript.Walk();
+            }
+            delayshort();
+        }
         TextMeshPro.text = null;
         spriteLoader.SpriteDeactive();
         
+        
+        moving = false;
+        
+        
+
     }
     public void DealAcceptance()
     {
@@ -353,58 +501,133 @@ public class Merchants : MonoBehaviour
 
         else
         {
+           
             int no;
             switch (human)
             {
                 case Human.Buyer:
+                    imageObject = GameObject.Find(mItemSelector.items[y].itemName);
+                    
+                    if (TextMeshPro.text.EndsWith("Ne dersin ?"))
+                    {
+                        TextMeshPro.text = (firstValue + " bu fiyata anlastik");
+                        if (!int.TryParse(text1.text, out no))
+                        {
+                            Debug.Log("Deneme");
+                        }
+                        no += firstValue;
+                    }
+                    else 
+                    { 
                     TextMeshPro.text = (finalValue + " bu fiyata anlastik");
+                        if (!int.TryParse(text1.text, out no))
+                        {
+                            Debug.Log("Deneme");
+                        }
+                        no += finalValue;
+                    }
+
                     if (imageObject != null)
                     {
+                        
                         imageObject.SetActive(false);
                         mItemSelector.items.RemoveAt(y); ;
                     }
-                    if (!int.TryParse(textadd.text1.text, out no))
-                    {
-                        Debug.Log("Deneme");
-                    }
-                    no += finalValue;
-                    textadd.text1.text = no.ToString();
+                    
+                    text1.text = no.ToString();
                     spriteLoader.SpriteDeactive();
+                    if (animatorScript != null)
+                    {
+                        animatorScript.ShakeTrigger();
+                    }
+                    delay();
                     if (no > 10000)
                     {
                         gameOver();
                     }
+                    
+                    arm1movement.BackMovement();
+                    arm2movement.BackMovement();
+                    
+                    moving = false;
+                    TextMeshPro.text = null;
+                    spriteLoader.SpriteDeactive();
                     break;
 
 
                 case Human.Seller:
                     int money;
-                    if (!int.TryParse(textadd.text1.text, out money))
+                    if (!int.TryParse(text1.text, out money))
                     {
                         Debug.Log("Deneme");
 
                     }
+                    
                     if (money < finalValue)
                     {
                         notEnoughMoney();
                         spriteLoader.SpriteDeactive();
+                        arm1movement.MoveBack();
+                        arm2movement.MoveBack();
+                        moving = false;
+                        if (animatorScript != null)
+                        {
+                            animatorScript.Walk();
+                        }
+                        delayshort();
                     }
-                    else
+                    else if (TextMeshPro.text.EndsWith("Ne dersin ?"))
                     {
                         TextMeshPro.text = (finalValue + " bu fiyata anlastik");
-                        if (!int.TryParse(textadd.text1.text, out no))
+                        if (!int.TryParse(text1.text, out no))
                         {
                             Debug.Log("Deneme");
                         }
-                        no += -finalValue;
-                        textadd.text1.text = no.ToString();
+                        no += -firstValue;
+                        text1.text = no.ToString();
                         if (imageObject == null)
                         {
                             FindingDisabled();
                             mItemSelector.items.Add(mItemSelector.itemsTest[y]);
                         }
+                        if (animatorScript != null)
+                        {
+                            animatorScript.ShakeTrigger();
+                        }
+                        delay();
                         spriteLoader.SpriteDeactive();
+                        arm1movement.BackMovement();
+                        arm2movement.BackMovement();
+                        moving = false;
                     }
+                    else
+                    {
+                        TextMeshPro.text = (finalValue + " bu fiyata anlastik");
+                        if (!int.TryParse(text1.text, out no))
+                        {
+                            Debug.Log("Deneme");
+                        }
+                        no += -finalValue;
+                        text1.text = no.ToString();
+                        if (imageObject == null)
+                        {
+                            FindingDisabled();
+                            mItemSelector.items.Add(mItemSelector.itemsTest[y]);
+                        }
+                        if (animatorScript != null)
+                        {
+                            animatorScript.ShakeTrigger();
+                        }
+                        delay();
+                        spriteLoader.SpriteDeactive();
+                        arm1movement.BackMovement();
+                        arm2movement.BackMovement();
+                        moving = false;
+                        
+
+                    }
+                    TextMeshPro.text = null;
+                    spriteLoader.SpriteDeactive();
                     break;
 
 
@@ -413,14 +636,14 @@ public class Merchants : MonoBehaviour
 
             }
 
-            Reset();
+            
         }
         
     }
     private void notEnoughMoney()
     {
         int money;
-        if (!int.TryParse(textadd.text1.text, out money))
+        if (!int.TryParse(text1.text, out money))
         {
             Debug.Log("Deneme");
         }
@@ -456,14 +679,21 @@ public class Merchants : MonoBehaviour
     public void Start()
     {
         
+        animatorScript=FindAnyObjectByType<AnimatorScript>();
+        
+        animatorScript.animator1 = GameObject.Find("Arm").GetComponent<Animator>();
+        animatorScript.animator2 = GameObject.Find("Arm (1)").GetComponent<Animator>();
+        
+        spriteLoader =FindAnyObjectByType<SpriteLoader>();
 
 
-        spriteLoader=FindAnyObjectByType<SpriteLoader>();
+        TextMeshPro.text = null;
+        spriteLoader.SpriteDeactive();
+
+        temporarybuyer = 0;
+        temporaryseller = 0;
         
 
-        Reset();
-
-        
         mItemSelector = FindObjectOfType<ItemSelector>();
         mItemSelector.RandomizeItem();
         int a = mItemSelector.TotalLength();
@@ -485,5 +715,6 @@ public class Merchants : MonoBehaviour
 
 
     }
+    
 
 }

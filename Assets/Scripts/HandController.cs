@@ -6,11 +6,10 @@ using UnityEngine.InputSystem;
 public class HandController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;    
     private Vector2 moveDir;
-
     private GameInput gameInput;
-
+    
     private void OnEnable()
     {
         if (gameInput == null)

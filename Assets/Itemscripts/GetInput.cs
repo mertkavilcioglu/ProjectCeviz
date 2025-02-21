@@ -30,7 +30,7 @@ public class GetInput : MonoBehaviour
         {
             if (tmpInputField != null)
             {
-                tmpInputField.textComponent.color = Color.white; 
+                tmpInputField.textComponent.color = Color.black; 
             }
         }
     
