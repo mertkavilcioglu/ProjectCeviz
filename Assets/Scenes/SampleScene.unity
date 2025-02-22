@@ -3159,6 +3159,7 @@ GameObject:
   - component: {fileID: 1014103531}
   - component: {fileID: 1014103533}
   - component: {fileID: 1014103532}
+  - component: {fileID: 1014103534}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3365,6 +3366,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1014103534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014103524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d595e5255397831468da850592ef2ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gorus: {fileID: 453869139}
+  anlas: {fileID: 238866486}
+  anlaskes: {fileID: 923891159}
 --- !u!1 &1055889231
 GameObject:
   m_ObjectHideFlags: 0

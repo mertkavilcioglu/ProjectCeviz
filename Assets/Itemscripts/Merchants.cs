@@ -14,6 +14,7 @@ public class Merchants : MonoBehaviour
     private GameObject imageObject;
     private SpriteLoader spriteLoader;
     private AnimatorScript animatorScript;
+    private ButtonChanger buttonChanger;
     public Movement arm1movement;
     public Movement arm2movement;
     public enum Human
@@ -189,7 +190,8 @@ public class Merchants : MonoBehaviour
                         arm1movement.BackMovement();
                         arm2movement.BackMovement();
                         moving = false;
-                        
+                        buttonChanger.buttonDisable();
+
                     }
                     else if (secondValue >= firstValue * 3 / 2)
                     {
@@ -206,6 +208,7 @@ public class Merchants : MonoBehaviour
                             animatorScript.Walk();
                         }
                         delayshort();
+                        buttonChanger.buttonDisable();
                     }
                     else
                     {
@@ -226,6 +229,7 @@ public class Merchants : MonoBehaviour
                                 animatorScript.Walk();
                             }
                             delayshort();
+                            buttonChanger.buttonDisable();
                         }
                         else
                         {
@@ -259,7 +263,7 @@ public class Merchants : MonoBehaviour
                                     arm1movement.BackMovement();
                                     arm2movement.BackMovement();
                                     moving = false;
-                                    
+                                    buttonChanger.buttonDisable();
 
                             }
                             else
@@ -315,6 +319,7 @@ public class Merchants : MonoBehaviour
                                 animatorScript.Walk();
                             }
                             delayshort();
+                            buttonChanger.buttonDisable();
                         }
                         else
                         {
@@ -344,7 +349,7 @@ public class Merchants : MonoBehaviour
                             arm1movement.BackMovement();
                             arm2movement.BackMovement();
                             moving = false;
-                            
+                            buttonChanger.buttonDisable();
 
                         }
 
@@ -364,6 +369,7 @@ public class Merchants : MonoBehaviour
                             animatorScript.Walk();
                         }
                         delayshort();
+                        buttonChanger.buttonDisable();
                     }
                     else
                     {
@@ -402,7 +408,7 @@ public class Merchants : MonoBehaviour
                             arm1movement.BackMovement();
                             arm2movement.BackMovement();
                             moving = false;
-
+                            buttonChanger.buttonDisable();
                         }
                         
                         else
@@ -678,7 +684,7 @@ public class Merchants : MonoBehaviour
     
     public void Start()
     {
-        
+        buttonChanger=FindAnyObjectByType<ButtonChanger>();
         animatorScript=FindAnyObjectByType<AnimatorScript>();
         
         animatorScript.animator1 = GameObject.Find("Arm").GetComponent<Animator>();
