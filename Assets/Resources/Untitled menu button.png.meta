@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e95bcf60ad12cc24aa62249bf8a3b8ac
+guid: 70494d1bc928ace438ebf973daf95767
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,10 +45,10 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.26999292, y: 0.30079165}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 234, y: 156, z: 1114, w: 567}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -105,22 +105,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled 21_0
+      name: Untitled menu button_0
       rect:
         serializedVersion: 2
-        x: 224
-        y: 144
+        x: 223
+        y: 143
         width: 593
         height: 380
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f817ce5543daf1408478f072fe334df
-      internalID: -245867248
+      spriteID: 55fdd5398e81e6d4c9cce358e0c40caa
+      internalID: 537350187
       vertices: []
       indices: 
       edges: []
@@ -129,14 +129,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Untitled 21_0: -245867248
+      Untitled menu button_0: 537350187
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
