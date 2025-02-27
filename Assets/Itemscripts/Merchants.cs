@@ -17,6 +17,7 @@ public class Merchants : MonoBehaviour
     private ButtonChanger buttonChanger;
     public Movement arm1movement;
     public Movement arm2movement;
+    private RotateObject RotateObject;
     public enum Human
     {
         Buyer,
@@ -47,7 +48,7 @@ public class Merchants : MonoBehaviour
         }
         if (moving == false)
         {
-            arm1movement.ForwardMovement();
+            
             arm2movement.ForwardMovement();
             moving = true;
         }
@@ -187,10 +188,13 @@ public class Merchants : MonoBehaviour
                         {
                             gameOver();
                         }
-                        arm1movement.BackMovement();
+                     
                         arm2movement.BackMovement();
                         moving = false;
                         buttonChanger.buttonDisable();
+                        Invoke(nameof(DelayRotate), 2.5f);
+                        Invoke(nameof(DelayRotate), 4.75f);
+
 
                     }
                     else if (secondValue >= firstValue * 3 / 2)
@@ -200,7 +204,7 @@ public class Merchants : MonoBehaviour
                         animatorScript.animator2.Rebind();
                         getinput.tmpInputField.text = null;
                         spriteLoader.SpriteDeactive();
-                        arm1movement.MoveBack();
+                    
                         arm2movement.MoveBack();
                         moving =false;
                         if (animatorScript != null)
@@ -209,6 +213,8 @@ public class Merchants : MonoBehaviour
                         }
                         delayshort();
                         buttonChanger.buttonDisable();
+                        Invoke(nameof(DelayRotate), 0f);
+                        Invoke(nameof(DelayRotate), 1.75f);
                     }
                     else
                     {
@@ -221,7 +227,7 @@ public class Merchants : MonoBehaviour
                             animatorScript.animator2.Rebind();
                             getinput.tmpInputField.text = null;
                             spriteLoader.SpriteDeactive();
-                            arm1movement.MoveBack();
+                        
                             arm2movement.MoveBack();
                             moving = false;
                             if (animatorScript != null)
@@ -230,6 +236,8 @@ public class Merchants : MonoBehaviour
                             }
                             delayshort();
                             buttonChanger.buttonDisable();
+                            Invoke(nameof(DelayRotate), 0f);
+                            Invoke(nameof(DelayRotate), 1.75f);
                         }
                         else
                         {
@@ -260,10 +268,12 @@ public class Merchants : MonoBehaviour
                                     {
                                       gameOver();
                                     }
-                                    arm1movement.BackMovement();
+                                
                                     arm2movement.BackMovement();
                                     moving = false;
                                     buttonChanger.buttonDisable();
+                                    Invoke(nameof(DelayRotate), 2.5f);
+                                    Invoke(nameof(DelayRotate), 4.75f);
 
                             }
                             else
@@ -311,7 +321,7 @@ public class Merchants : MonoBehaviour
                             getinput.tmpInputField.text = null;
                             animatorScript.animator1.Rebind();
                             animatorScript.animator2.Rebind();
-                            arm1movement.MoveBack();
+                           
                             arm2movement.MoveBack();
                             moving = false;
                             if (animatorScript != null)
@@ -320,6 +330,8 @@ public class Merchants : MonoBehaviour
                             }
                             delayshort();
                             buttonChanger.buttonDisable();
+                            Invoke(nameof(DelayRotate), 0f);
+                            Invoke(nameof(DelayRotate), 1.75f);
                         }
                         else
                         {
@@ -346,11 +358,12 @@ public class Merchants : MonoBehaviour
                             }
                             delay();
                             spriteLoader.SpriteDeactive();
-                            arm1movement.BackMovement();
+                   
                             arm2movement.BackMovement();
                             moving = false;
                             buttonChanger.buttonDisable();
-
+                            Invoke(nameof(DelayRotate), 2.5f);
+                            Invoke(nameof(DelayRotate), 4.75f);
                         }
 
                     }
@@ -361,7 +374,7 @@ public class Merchants : MonoBehaviour
                         animatorScript.animator2.Rebind();
                         getinput.tmpInputField.text = null;
                         spriteLoader.SpriteDeactive();
-                        arm1movement.MoveBack();
+                  
                         arm2movement.MoveBack();
                         moving = false;
                         if (animatorScript != null)
@@ -370,6 +383,8 @@ public class Merchants : MonoBehaviour
                         }
                         delayshort();
                         buttonChanger.buttonDisable();
+                        Invoke(nameof(DelayRotate), 0f);
+                        Invoke(nameof(DelayRotate), 1.75f);
                     }
                     else
                     {
@@ -405,10 +420,12 @@ public class Merchants : MonoBehaviour
                             {
                                 gameOver();
                             }
-                            arm1movement.BackMovement();
+                           
                             arm2movement.BackMovement();
                             moving = false;
                             buttonChanger.buttonDisable();
+                            Invoke(nameof(DelayRotate), 2.5f);
+                            Invoke(nameof(DelayRotate), 4.75f);
                         }
                         
                         else
@@ -453,7 +470,11 @@ public class Merchants : MonoBehaviour
 
         Invoke(nameof(Rebingding), 1f);
     }
-
+    private void DelayRotate()
+    {
+        RotateObject.NegativeObjectRotate();
+        animatorScript.animator2.Rebind();
+    }
     private void Rebingding()
     {
 
@@ -467,9 +488,10 @@ public class Merchants : MonoBehaviour
     }
     public void Reset()
     {
+        RotateObject.ObjectRotate();
         if (!string.IsNullOrEmpty(TextMeshPro.text))
         {
-            arm1movement.MoveBack();
+           
             arm2movement.MoveBack();
             animatorScript.animator1.Rebind();
             animatorScript.animator2.Rebind();
@@ -484,8 +506,8 @@ public class Merchants : MonoBehaviour
         
         
         moving = false;
-        
-        
+
+        Invoke(nameof(DelayRotate), 1.75f);
 
     }
     public void DealAcceptance()
@@ -552,12 +574,14 @@ public class Merchants : MonoBehaviour
                         gameOver();
                     }
                     
-                    arm1movement.BackMovement();
+                    
                     arm2movement.BackMovement();
                     
                     moving = false;
                     TextMeshPro.text = null;
                     spriteLoader.SpriteDeactive();
+                    Invoke(nameof(DelayRotate), 2.5f);
+                    Invoke(nameof(DelayRotate), 4.75f);
                     break;
 
 
@@ -573,7 +597,7 @@ public class Merchants : MonoBehaviour
                     {
                         notEnoughMoney();
                         spriteLoader.SpriteDeactive();
-                        arm1movement.MoveBack();
+                        
                         arm2movement.MoveBack();
                         moving = false;
                         if (animatorScript != null)
@@ -581,6 +605,8 @@ public class Merchants : MonoBehaviour
                             animatorScript.Walk();
                         }
                         delayshort();
+                        Invoke(nameof(DelayRotate), 0f);
+                        Invoke(nameof(DelayRotate), 1.75f);
                     }
                     else if (TextMeshPro.text.EndsWith("Ne dersin ?"))
                     {
@@ -602,9 +628,11 @@ public class Merchants : MonoBehaviour
                         }
                         delay();
                         spriteLoader.SpriteDeactive();
-                        arm1movement.BackMovement();
+                       
                         arm2movement.BackMovement();
                         moving = false;
+                        Invoke(nameof(DelayRotate), 2.5f);
+                        Invoke(nameof(DelayRotate), 4.75f);
                     }
                     else
                     {
@@ -626,10 +654,11 @@ public class Merchants : MonoBehaviour
                         }
                         delay();
                         spriteLoader.SpriteDeactive();
-                        arm1movement.BackMovement();
+                     
                         arm2movement.BackMovement();
                         moving = false;
-                        
+                        Invoke(nameof(DelayRotate), 2.5f);
+                        Invoke(nameof(DelayRotate), 4.75f);
 
                     }
                     TextMeshPro.text = null;
@@ -684,9 +713,10 @@ public class Merchants : MonoBehaviour
     
     public void Start()
     {
+        RotateObject=FindAnyObjectByType<RotateObject>();
         buttonChanger=FindAnyObjectByType<ButtonChanger>();
         animatorScript=FindAnyObjectByType<AnimatorScript>();
-        
+       
         animatorScript.animator1 = GameObject.Find("Arm").GetComponent<Animator>();
         animatorScript.animator2 = GameObject.Find("Arm (1)").GetComponent<Animator>();
         
@@ -698,7 +728,12 @@ public class Merchants : MonoBehaviour
 
         temporarybuyer = 0;
         temporaryseller = 0;
-        
+        if (animatorScript != null)
+        {
+
+            animatorScript.Walk();
+        }
+        arm1movement.ForwardMovement();
 
         mItemSelector = FindObjectOfType<ItemSelector>();
         mItemSelector.RandomizeItem();

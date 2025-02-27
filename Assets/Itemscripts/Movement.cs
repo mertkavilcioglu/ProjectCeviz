@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
         else if (timer > 0 && move == true && x==2)
         {
             timer -= Time.deltaTime;
-            transform.Translate(moveDirection * backspeed * Time.deltaTime);
+            transform.Translate(-moveDirection * backspeed * Time.deltaTime);
         }
     }
 }
