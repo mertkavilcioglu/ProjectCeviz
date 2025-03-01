@@ -4,6 +4,8 @@ using UnityEngine;
 using Unity.IO;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using System.Net.Http.Headers;
 public class Merchants : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI TextMeshPro;
@@ -16,6 +18,8 @@ public class Merchants : MonoBehaviour
     public Movement arm1movement;
     public Movement arm2movement;
     private RotateObject RotateObject;
+    public TMP_Text text1;
+    public TMP_Text text2;
     public enum Human
     {
         Buyer,
@@ -29,12 +33,12 @@ public class Merchants : MonoBehaviour
     private int secondValue;
     private int finalValue;
     private int anger;
-    public TMP_Text text1;
     private Human human;
     private int temporarybuyer;
     private int temporaryseller;
     public void Dialog()
     {
+        text2.text = null;
         animatorScript.animator1.Rebind();
         animatorScript.animator2.Rebind();
         if (animatorScript != null)
@@ -58,7 +62,7 @@ public class Merchants : MonoBehaviour
         {
             case Human.Buyer:
                 y = mItemSelector.RandomItem();
-                if (y == 0)
+                if (y == -1)
                 {
                     TextMeshPro.text = ("Alabilecegim hicbir seyin yok.");
                     return;
@@ -74,6 +78,7 @@ public class Merchants : MonoBehaviour
                     animatorScript.Trigger();
                 }
                 //spriteLoader.SpriteLoad(mItemSelector.ItemName());
+                text2.text = mItemSelector.ItemValue().ToString();
                 break;
             case Human.Seller:
                 if (mItemSelector.TotalLength() == 20)
@@ -99,6 +104,7 @@ public class Merchants : MonoBehaviour
                         animatorScript.Trigger();
                     }
                     //spriteLoader.SpriteLoad(mItemSelector.ItemNameTest());
+                    text2.text = mItemSelector.ItemValueTest().ToString();
                 }
                 break;
         }
@@ -115,7 +121,7 @@ public class Merchants : MonoBehaviour
         }
         else if (TextMeshPro.text == ("bu fiyata anlastik"))
         {
-            
+
         }
         else
         {
@@ -155,6 +161,7 @@ public class Merchants : MonoBehaviour
                         buttonChanger.buttonDisableLonger();
                         Invoke(nameof(DelayRotate), 2.65f);
                         Invoke(nameof(DelayRotate), 4.75f);
+                        RotateObject.delayChange();
                     }
                     else if (secondValue >= firstValue * 3 / 2)
                     {
@@ -296,6 +303,7 @@ public class Merchants : MonoBehaviour
                             buttonChanger.buttonDisableLonger();
                             Invoke(nameof(DelayRotate), 2.65f);
                             Invoke(nameof(DelayRotate), 4.75f);
+                            RotateObject.delayChange();
                         }
                     }
                     else if (secondValue <= firstValue / 2)
@@ -341,35 +349,36 @@ public class Merchants : MonoBehaviour
                                 Invoke(nameof(DelayRotate), 1.57f);
                             }
                             else
-                            { 
-                            temporaryseller = 0;
-                            TextMeshPro.text = ("anlastik");
-                            if (imageObject == null)
                             {
-                                FindingDisabled();
-                                mItemSelector.items.Add(mItemSelector.itemsTest[y]);
-                            }
-                            if (!int.TryParse(text1.text, out no))
-                            {
-                                Debug.Log("Deneme");
-                            }
-                            no += -secondValue;
-                            text1.text = no.ToString();
-                            if (animatorScript != null)
-                            {
-                                animatorScript.ShakeTrigger();
-                            }
-                            delay();
-                            spriteLoader.SpriteDeactive();
-                            if (no > 10000)
-                            {
-                                gameOver();
-                            }
-                            arm2movement.BackMovement();
-                            moving = false;
-                            buttonChanger.buttonDisableLonger();
-                            Invoke(nameof(DelayRotate), 2.65f);
-                            Invoke(nameof(DelayRotate), 4.75f);
+                                temporaryseller = 0;
+                                TextMeshPro.text = ("anlastik");
+                                if (imageObject == null)
+                                {
+                                    FindingDisabled();
+                                    mItemSelector.items.Add(mItemSelector.itemsTest[y]);
+                                }
+                                if (!int.TryParse(text1.text, out no))
+                                {
+                                    Debug.Log("Deneme");
+                                }
+                                no += -secondValue;
+                                text1.text = no.ToString();
+                                if (animatorScript != null)
+                                {
+                                    animatorScript.ShakeTrigger();
+                                }
+                                delay();
+                                spriteLoader.SpriteDeactive();
+                                if (no > 10000)
+                                {
+                                    gameOver();
+                                }
+                                arm2movement.BackMovement();
+                                moving = false;
+                                buttonChanger.buttonDisableLonger();
+                                Invoke(nameof(DelayRotate), 2.65f);
+                                Invoke(nameof(DelayRotate), 4.75f);
+                                RotateObject.delayChange();
                             }
                         }
                         else
@@ -390,6 +399,7 @@ public class Merchants : MonoBehaviour
     private void delay()
     {
         Invoke(nameof(Rebingding), 3f);
+        Invoke(nameof(Teleport), 5f);
     }
     private void delayshort()
     {
@@ -417,22 +427,29 @@ public class Merchants : MonoBehaviour
     }
     public void Reset()
     {
-        RotateObject.ObjectRotate();
-        if (!string.IsNullOrEmpty(TextMeshPro.text))
+        float position = RotateObject.returnX();
+        if (position < 9)
         {
-            arm2movement.MoveBack();
-            animatorScript.animator1.Rebind();
-            animatorScript.animator2.Rebind();
-            if (animatorScript != null)
+            RotateObject.ObjectRotate();
+            if (!string.IsNullOrEmpty(TextMeshPro.text))
             {
-                animatorScript.Walk();
+                arm2movement.MoveBack();
+                animatorScript.animator1.Rebind();
+                animatorScript.animator2.Rebind();
+                if (animatorScript != null)
+                {
+                    animatorScript.Walk();
+                }
+                delayshort();
             }
-            delayshort();
+            moving = false;
+            Invoke(nameof(DelayRotate), 1.57f);
         }
+
+
         TextMeshPro.text = null;
         spriteLoader.SpriteDeactive();
-        moving = false;
-        Invoke(nameof(DelayRotate), 1.57f);
+
     }
     public void DealAcceptance()
     {
@@ -495,6 +512,7 @@ public class Merchants : MonoBehaviour
                     spriteLoader.SpriteDeactive();
                     Invoke(nameof(DelayRotate), 2.65f);
                     Invoke(nameof(DelayRotate), 4.75f);
+                    RotateObject.delayChange();
                     break;
                 case Human.Seller:
                     int money;
@@ -503,7 +521,7 @@ public class Merchants : MonoBehaviour
                         Debug.Log("Deneme");
 
                     }
-                    if (money < finalValue && money <firstValue || money==0)
+                    if (money < finalValue && money < firstValue || money == 0)
                     {
                         notEnoughMoney();
                         spriteLoader.SpriteDeactive();
@@ -541,6 +559,7 @@ public class Merchants : MonoBehaviour
                         moving = false;
                         Invoke(nameof(DelayRotate), 2.65f);
                         Invoke(nameof(DelayRotate), 4.75f);
+                        RotateObject.delayChange();
                     }
                     else
                     {
@@ -566,6 +585,7 @@ public class Merchants : MonoBehaviour
                         moving = false;
                         Invoke(nameof(DelayRotate), 2.65f);
                         Invoke(nameof(DelayRotate), 4.75f);
+                        RotateObject.delayChange();
                     }
                     TextMeshPro.text = null;
                     spriteLoader.SpriteDeactive();
@@ -640,6 +660,7 @@ public class Merchants : MonoBehaviour
                 subobject.SetActive(false);
             }
         }
+
 
     }
 

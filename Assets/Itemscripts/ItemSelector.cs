@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSelector : MonoBehaviour
 {
-   
+
 
     public List<Item> items = new List<Item>();
     public List<Item> itemsTest = new List<Item>();
@@ -12,27 +12,27 @@ public class ItemSelector : MonoBehaviour
     private int index;
     public void RandomizeItem()
     {
-        for (int x=0; x<20; x++)
+        for (int x = 0; x < 20; x++)
         {
             int chance = UnityEngine.Random.Range(0, 2);
             Debug.Log(chance);
-            if(TotalLength()==5)
+            if (TotalLength() == 5)
             {
 
             }
-            else if(chance == 1)
+            else if (chance == 1)
             {
                 items.Add(itemsTest[x]);
 
             }
-            
+
 
         }
-        
+
     }
     public int RandomItem()
     {
-        if (items.Count == 0) return 0;
+        if (items.Count == 0) return -1;
         index = Random.Range(0, items.Count);
         return index;
     }
@@ -40,15 +40,15 @@ public class ItemSelector : MonoBehaviour
     public int TotalLength()
     {
         return items.Count;
-        
+
     }
 
     public int ItemValue()
     {
         return items[index].value;
     }
-    public string ItemName() 
-    {  
+    public string ItemName()
+    {
         return items[index].name;
     }
     public int RandomItemTest()
