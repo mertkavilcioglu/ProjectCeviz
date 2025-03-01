@@ -13,7 +13,7 @@ public class ButtonChanger : MonoBehaviour
     {
         Debug.Log(30);
         gorus.onClick.AddListener(()=>buttonDisable());
-        anlas.onClick.AddListener(() => buttonDisable());
+        anlas.onClick.AddListener(() => buttonDisableLonger());
         anlaskes.onClick.AddListener(() => buttonDisable());
     }
     public void buttonDisable()
@@ -23,6 +23,15 @@ public class ButtonChanger : MonoBehaviour
         anlas.interactable = false;
         anlaskes.interactable=false;
         Invoke(nameof(buttonDelay), 3f); 
+
+    }
+    public void buttonDisableLonger()
+    {
+        Debug.Log(40);
+        gorus.interactable = false;
+        anlas.interactable = false;
+        anlaskes.interactable = false;
+        Invoke(nameof(buttonDelay), 6f);
 
     }
     private void buttonDelay()

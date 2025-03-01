@@ -14,4 +14,8 @@ public class RotateObject : MonoBehaviour
     {
         transform.Rotate(negativeRotate);
     }
+    public void teleport()
+    {
+        transform.position = new Vector3(9.4f, -1f, 0);
+    }
 }
