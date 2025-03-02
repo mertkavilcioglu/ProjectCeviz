@@ -24,7 +24,7 @@ public class RotateObject : MonoBehaviour
     }
     public void changeInposition()
     {
-        transform.position = new Vector3(2.5f, -1f, 0);
+        transform.position = new Vector3(3.5f, -1f, 0);
     }
     public void delayChange()
     {

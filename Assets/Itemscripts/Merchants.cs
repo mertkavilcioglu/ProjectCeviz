@@ -15,6 +15,7 @@ public class Merchants : MonoBehaviour
     private SpriteLoader spriteLoader;
     private AnimatorScript animatorScript;
     private ButtonChanger buttonChanger;
+    private ArmSprite ArmSprite;
     public Movement arm1movement;
     public Movement arm2movement;
     private RotateObject RotateObject;
@@ -38,6 +39,7 @@ public class Merchants : MonoBehaviour
     private int temporaryseller;
     public void Dialog()
     {
+        
         text2.text = null;
         animatorScript.animator1.Rebind();
         animatorScript.animator2.Rebind();
@@ -179,6 +181,7 @@ public class Merchants : MonoBehaviour
                         delayshort();
                         buttonChanger.buttonDisable();
                         Invoke(nameof(DelayRotate), 0f);
+                        RotateObject.changeInposition();
                         Invoke(nameof(DelayRotate), 1.57f);
                     }
                     else
@@ -201,6 +204,7 @@ public class Merchants : MonoBehaviour
                             delayshort();
                             buttonChanger.buttonDisable();
                             Invoke(nameof(DelayRotate), 0f);
+                            RotateObject.changeInposition();
                             Invoke(nameof(DelayRotate), 1.57f);
                         }
                         else
@@ -276,6 +280,7 @@ public class Merchants : MonoBehaviour
                             delayshort();
                             buttonChanger.buttonDisable();
                             Invoke(nameof(DelayRotate), 0f);
+                            RotateObject.changeInposition();
                             Invoke(nameof(DelayRotate), 1.57f);
                         }
                         else
@@ -322,6 +327,7 @@ public class Merchants : MonoBehaviour
                         delayshort();
                         buttonChanger.buttonDisable();
                         Invoke(nameof(DelayRotate), 0f);
+                        RotateObject.changeInposition();
                         Invoke(nameof(DelayRotate), 1.57f);
                     }
                     else
@@ -346,6 +352,7 @@ public class Merchants : MonoBehaviour
                                 delayshort();
                                 buttonChanger.buttonDisable();
                                 Invoke(nameof(DelayRotate), 0f);
+                                RotateObject.changeInposition();
                                 Invoke(nameof(DelayRotate), 1.57f);
                             }
                             else
@@ -409,6 +416,7 @@ public class Merchants : MonoBehaviour
     private void Teleport()
     {
         RotateObject.teleport();
+        ArmSprite.PrefabLoad();
     }
     private void DelayRotate()
     {
@@ -431,6 +439,7 @@ public class Merchants : MonoBehaviour
         if (position < 9)
         {
             RotateObject.ObjectRotate();
+            RotateObject.changeInposition();
             if (!string.IsNullOrEmpty(TextMeshPro.text))
             {
                 arm2movement.MoveBack();
@@ -533,6 +542,7 @@ public class Merchants : MonoBehaviour
                         }
                         delayshort();
                         Invoke(nameof(DelayRotate), 0f);
+                        RotateObject.changeInposition();
                         Invoke(nameof(DelayRotate), 1.57f);
                     }
                     else if (TextMeshPro.text.EndsWith("Ne dersin ?"))
@@ -628,6 +638,7 @@ public class Merchants : MonoBehaviour
     public void Start()
     {
         RotateObject = FindAnyObjectByType<RotateObject>();
+        ArmSprite= FindObjectOfType<ArmSprite>();
         buttonChanger = FindAnyObjectByType<ButtonChanger>();
         animatorScript = FindAnyObjectByType<AnimatorScript>();
         animatorScript.animator1 = GameObject.Find("Arm").GetComponent<Animator>();
@@ -660,8 +671,7 @@ public class Merchants : MonoBehaviour
                 subobject.SetActive(false);
             }
         }
-
-
+        ArmSprite.PrefabLoad();
     }
 
 }

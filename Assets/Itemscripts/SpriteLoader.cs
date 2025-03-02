@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpriteLoader : MonoBehaviour
 {
     private Sprite MySprite;
-
+    
+    
     public void SpriteLoad(string name)
     {
         MySprite = Resources.Load<Sprite>(name);
@@ -15,11 +16,10 @@ public class SpriteLoader : MonoBehaviour
         }
         GetComponent<SpriteRenderer>().sprite = MySprite;
     }
-
-    
     public void SpriteDeactive()
     {
         GetComponent<SpriteRenderer>().sprite = null;
 
     }
+   
 }
