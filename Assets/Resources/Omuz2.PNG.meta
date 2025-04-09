@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ca5c0ca7b34575142b03abb79bca67b5
+guid: dfbb7c7fc6823824dace39e3faa2b2fd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 175
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,22 +105,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beden3
+      name: Omuz2
       rect:
         serializedVersion: 2
-        x: 275
-        y: 0
-        width: 1033
-        height: 1640
+        x: 712
+        y: 888
+        width: 439
+        height: 423
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69061cf3997531c49bb68878d774b5b6
-      internalID: 2091274887
+      spriteID: b0620af52b32cb04eb8683aacded31cd
+      internalID: -327763673
       vertices: []
       indices: 
       edges: []
@@ -129,14 +129,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Beden3: 2091274887
+      Omuz2: -327763673
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

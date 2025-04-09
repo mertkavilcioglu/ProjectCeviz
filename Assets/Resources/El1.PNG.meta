@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ca5c0ca7b34575142b03abb79bca67b5
+guid: 88183d36e93878e499caf826827e6a63
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,22 +105,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beden3
+      name: El1
       rect:
         serializedVersion: 2
-        x: 275
-        y: 0
-        width: 1033
-        height: 1640
+        x: 977
+        y: 277
+        width: 520
+        height: 369
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69061cf3997531c49bb68878d774b5b6
-      internalID: 2091274887
+      spriteID: f12c923ebf378e04f97eab6d00827648
+      internalID: 1684725227
       vertices: []
       indices: 
       edges: []
@@ -129,14 +129,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Beden3: 2091274887
+      El1: 1684725227
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
